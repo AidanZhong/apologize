@@ -1,10 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apology Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f6d365, #fda085);
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        #yesBtn {
+            background: #4caf50;
+            color: white;
+        }
+
+        #noBtn {
+            background: #f44336;
+            color: white;
+            position: relative;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
 </head>
 <body>
-$END$
+<div class="container">
+    <h1 id="message">对不起，怪我没仔细看，惹你生气了，原谅我好吗?</h1>
+    <div class="buttons">
+        <button id="yesBtn">好！</button>
+        <button id="noBtn">不！</button>
+    </div>
+</div>
+
+<script>
+    const message = document.getElementById("message");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+
+    yesBtn.addEventListener("click", () => {
+        message.textContent = "爱你呦❤️";
+        yesBtn.style.display = "none";
+        noBtn.style.display = "none";
+    });
+
+    noBtn.addEventListener("click", () => {
+        const container = document.querySelector(".container");
+        const btnWidth = noBtn.offsetWidth;
+        const btnHeight = noBtn.offsetHeight;
+        const maxX = container.offsetWidth - btnWidth - 20;
+        const maxY = container.offsetHeight - btnHeight - 20;
+
+        const randX = Math.floor(Math.random() * maxX);
+        const randY = Math.floor(Math.random() * maxY);
+
+        noBtn.style.position = "absolute";
+        noBtn.style.left = randX + "px";
+        noBtn.style.top = randY + "px";
+    });
+</script>
 </body>
 </html>
